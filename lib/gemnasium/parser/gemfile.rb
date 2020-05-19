@@ -17,7 +17,15 @@ module Gemnasium
             deps << dep if dep
           end
         end
-      end
+	  end
+
+	  def ruby
+		if @ruby = content.match(Patterns::RUBY_CALL)
+			return @ruby[:version]
+		else
+			return nil
+		end
+	  end
 
       def gemspec
         @gemspec = if gemspec_match

@@ -2,7 +2,7 @@ module Gemnasium
   module Parser
     module Patterns
       GEM_NAME = /[a-zA-Z0-9\-_\.]+/
-      QUOTED_GEM_NAME = /(?:(?<gq>["'])(?<name>#{GEM_NAME})\k<gq>|%q<(?<name>#{GEM_NAME})>)/
+	  QUOTED_GEM_NAME = /(?:(?<gq>["'])(?<name>#{GEM_NAME})\k<gq>|%q<(?<name>#{GEM_NAME})>)/
 
       MATCHER = /(?:=|!=|>|<|>=|<=|~>)/
       VERSION = /[0-9]+(?:\.[a-zA-Z0-9]+)*/
@@ -22,7 +22,8 @@ module Gemnasium
       OPTIONS = /#{PAIR}(?:[ \t]*,[ \t]*#{PAIR})*/
       COMMENT = /(#[^\n]*)?/
 
-      GEM_CALL = /^[ \t]*gem\(?[ \t]*#{QUOTED_GEM_NAME}(?:[ \t]*,[ \t]*#{REQUIREMENT_LIST})?(?:[ \t]*,[ \t]*(?<opts>#{OPTIONS}))?[ \t]*\)?[ \t]*#{COMMENT}$/
+	  GEM_CALL = /^[ \t]*gem\(?[ \t]*#{QUOTED_GEM_NAME}(?:[ \t]*,[ \t]*#{REQUIREMENT_LIST})?(?:[ \t]*,[ \t]*(?<opts>#{OPTIONS}))?[ \t]*\)?[ \t]*#{COMMENT}$/
+	  RUBY_CALL = /^[ \t]*ruby\(?[ \t]*(?:(?<gq>["'])(?<version>#{VERSION})\k<gq>)?[ \t]*#{COMMENT}$/
 
       SYMBOLS = /#{SYMBOL}([ \t]*,[ \t]*#{SYMBOL})*/
       GROUP_CALL = /^(?<i1>[ \t]*)group\(?[ \t]*(?<grps>#{SYMBOLS})[ \t]*\)?[ \t]+do[ \t]*?\n(?<blk>.*?)\n^\k<i1>end[ \t]*$/m
