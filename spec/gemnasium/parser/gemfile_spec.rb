@@ -78,7 +78,7 @@ describe Gemnasium::Parser::Gemfile do
   end
 
   it "parses gemspecs with a name option" do
-    content(%(gemspec :name => "gemnasium-parser"))
+    content(%(gemspec :name => "c66-gemnasium-parser"))
     gemfile.gemspec.should == "gemnasium-parser.gemspec"
   end
 
